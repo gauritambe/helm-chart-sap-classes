@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sap-classes
+description: A Helm chart for deploying the sap-classes frontend application
+type: application
+version: 0.1.0
+appVersion: "latest"

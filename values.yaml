@@ -1,0 +1,50 @@
+# Default values for sap-classes.
+
+nameOverride: ""
+fullnameOverride: ""
+
+namespace:
+  # Set to true if this chart should create its own namespace.
+  # If false, install with `--namespace sap-classes --create-namespace` instead.
+  create: true
+  name: sap-classes
+
+replicaCount: 1
+
+image:
+  repository: gauriiitambe/sap-frontend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+containerPort: 80
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+  protocol: TCP
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  host: sap-classes
+  path: /
+  pathType: Prefix
+
+resources: {}
+# resources:
+#   limits:
+#     cpu: 200m
+#     memory: 256Mi
+#   requests:
+#     cpu: 100m
+#     memory: 128Mi
+
+podAnnotations: {}
+podLabels: {}
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
